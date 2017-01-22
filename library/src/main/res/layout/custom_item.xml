@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:clickable="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <ImageView
+            android:background="@color/highlightItemDark"
+            android:alpha="0"
+            android:id="@+id/highlight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/dash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_action_minus"
+            android:scaleY="2"
+            android:scaleX="2"/>
+        <TextView
+            android:scaleX="0.2"
+            android:scaleY="0.2"
+            android:id="@+id/title"
+            android:alpha="0"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:text="text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="normal"/>
+    </RelativeLayout>
+
+    </FrameLayout>
+

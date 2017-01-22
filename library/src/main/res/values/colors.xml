@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="textNotSelectedDark">#e0e0e0</color>
+    <color name="textSelectedDark">#ffffff</color>
+    <color name="highlightItemDark">#18424242</color>
+
+    <color name="textNotSelectedLight">#424242</color>
+    <color name="textSelectedLight">#000000</color>
+    <color name="highlightItemLight">#18c7c7c7</color>
+
+    <color name="overlay">#424242</color>
+    <color name="main">#D4021B</color>
+</resources>

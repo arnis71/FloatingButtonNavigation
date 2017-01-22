@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FloatingButtonBottomNavigation">
+        <attr name="mainColor" format="color" />
+        <attr name="highlightSelectedItem" format="boolean" />
+        <attr name="colorTheme" format="enum">
+            <enum name="dark" value="0"/>
+            <enum name="light" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

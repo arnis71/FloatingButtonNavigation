@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BottomNav</string>
+    <integer name="fab_padding">30</integer>
+</resources>
