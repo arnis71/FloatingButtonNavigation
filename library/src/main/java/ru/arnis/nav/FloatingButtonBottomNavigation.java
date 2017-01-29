@@ -28,6 +28,7 @@ import io.codetail.animation.ViewAnimationUtils;
 
 public class FloatingButtonBottomNavigation extends RelativeLayout{
     private static final int REVEAL_DURATION = 350;
+    private static final int HIDE_DELAY = 260;
 
     private LinearLayout itemsList;
     private View revealView;
@@ -84,7 +85,7 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
                 @Override
                 public void onClick(View view) {
                     item.setSelection();
-                    hideNav(260);
+                    hideNav(HIDE_DELAY);
 
                     if (onItemClickListener!=null)
                         onItemClickListener.onItemClick(itemsList.indexOfChild(view));
@@ -274,6 +275,7 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
             background.animate().scaleX(.8f).scaleY(0.8f).setDuration(170).setInterpolator(new DecelerateInterpolator()).start();
         }
         void release(){
+            setButtonY(parentView.getY()); // TODO: 22/01/2017 try to find workaround
             background.animate().scaleX(1f).scaleY(1f).setDuration(0).start();
             parentView.setVisibility(INVISIBLE);
         }
@@ -285,11 +287,11 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
             parentView.setVisibility(VISIBLE);
         }
         void hide(){
-            setButtonY(parentView.getY());
-            parentView.animate().y(overlayView.getHeight()).start();
+            setButtonY(parentView.getY()); // TODO: 22/01/2017 try to find workaround
+            parentView.animate().setStartDelay(0).setInterpolator(new DecelerateInterpolator()).y(overlayView.getHeight()).start();
         }
         void show(){
-            parentView.animate().y(buttonY).start();
+            parentView.animate().setInterpolator(new OvershootInterpolator()).y(buttonY).start();
         }
         void setButtonCenter(){
             if (buttonCenter==0)

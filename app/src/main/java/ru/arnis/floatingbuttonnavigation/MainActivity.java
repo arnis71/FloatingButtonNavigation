@@ -1,19 +1,55 @@
 package ru.arnis.floatingbuttonnavigation;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 
+import ru.arnis.floatingbuttonnavigation.Fragments.InspiredByFragment;
+import ru.arnis.floatingbuttonnavigation.Fragments.ListviewFragment;
+import ru.arnis.floatingbuttonnavigation.Fragments.RecyclerFragment;
 import ru.arnis.nav.FloatingButtonBottomNavigation;
+import ru.arnis.nav.OnItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FloatingButtonBottomNavigation fbbn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingButtonBottomNavigation fbbn = (FloatingButtonBottomNavigation) findViewById(R.id.fbbn);
+        fbbn = (FloatingButtonBottomNavigation) findViewById(R.id.fbbn);
 
-        fbbn.setTitles("Item 1","Item 2","Item 3","Item 4","Item 5");
+        fbbn.setTitles("RecyclerView Demo","ListView Demo","Inspired By","Library info","Settings");
+        fbbn.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int index) {
+                switch (index){
+                    case 0: replaceFragment(new RecyclerFragment());break;
+                    case 1: replaceFragment(new ListviewFragment());break;
+                    case 2: replaceFragment(new InspiredByFragment());break;
+                }
+            }
+        });
+
+
+        addFragment(new RecyclerFragment());
+    }
+
+    private void addFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_frame, fragment).commit();
+    }
+    private void replaceFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_frame,fragment).addToBackStack(null).commit();
+    }
+
+    public void hideFbbn(){
+        fbbn.hideButton();
+    }
+    public void showFbbn(){
+        fbbn.showButton();
     }
 }

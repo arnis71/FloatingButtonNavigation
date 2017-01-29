@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <ru.arnis.nav.FloatingButtonBottomNavigation
+    <FrameLayout
+        android:id="@+id/fragment_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"/>
+
+    <ru.arnis.nav.FloatingButtonBottomNavigation
         android:id="@+id/fbbn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         custom:colorTheme="dark"
-        custom:highlightSelectedItem="false"
-        />
-        <!--custom:mainColor="#d4d4d4"-->
+        custom:highlightSelectedItem="false"/>
 </RelativeLayout>
