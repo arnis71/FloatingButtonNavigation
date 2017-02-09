@@ -16,11 +16,6 @@ public class InspiredByFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.insipred_by_layout,container,false);
-        WebView webView = (WebView) view.findViewById(R.id.gif_view);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-
-        webView.loadUrl("file:///android_asset/inspiration.gif");
         return view;
     }
 }
