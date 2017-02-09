@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'floating-button-navigation'
+
+    publishedGroupId = 'com.arnis'
+    libraryName = 'FloatingButtonNavigation'
+    artifact = 'floating-button-navigation'
+
+    libraryDescription = 'Android navigation library'
+
+    siteUrl = 'https://github.com/arnis71/FloatingButtonNavigation'
+    gitUrl = 'https://github.com/arnis71/FloatingButtonNavigation.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'arnis71'
+    developerName = 'Shaykhutdinov Arnis'
+    developerEmail = 'arnis71@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -8,7 +32,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -36,3 +60,6 @@ dependencies {
         transitive = true;
     }
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
