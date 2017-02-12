@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -130,7 +129,6 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
                 if (colorTheme!=0){
                     floatingButton.setIconColor(getResources().getColor(R.color.textSelectedLight));
                 }
-                Log.d("happy", "applyAttributes: ");
             } finally {
                 a.recycle();
             }
@@ -190,7 +188,6 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
                     revealView.setVisibility(INVISIBLE);
                     itemsList.setVisibility(INVISIBLE);
                 }
-
                 showing = !showing;
             }
 
@@ -208,9 +205,17 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
     }
 
     private void dim(long delay){
-        if (!showing)
+        if (!showing){
+//            overlayView.setVisibility(VISIBLE);
             overlayView.animate().setStartDelay(delay).alpha(.7f).setDuration(300).start();
-        else overlayView.animate().setStartDelay(delay).alpha(0).setDuration(300).start();
+        }
+        else
+            overlayView.animate().setStartDelay(delay).alpha(0).setDuration(300).withEndAction(new Runnable() {
+                @Override
+                public void run() {
+//                    overlayView.setVisibility(GONE);
+                }
+            }).start();
     }
 
     private void animateList(long delay){
@@ -239,7 +244,15 @@ public class FloatingButtonBottomNavigation extends RelativeLayout{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         gd.onTouchEvent(ev);
-        return animating;
+
+        // TODO: 12/02/2017 think of something else
+        overlayView.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return showing;
+            }
+        });
+        return false;
     }
 
     @Override

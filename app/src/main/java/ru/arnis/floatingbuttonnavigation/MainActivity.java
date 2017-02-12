@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import ru.arnis.floatingbuttonnavigation.Fragments.InspiredByFragment;
-import ru.arnis.floatingbuttonnavigation.Fragments.ListviewFragment;
+import ru.arnis.floatingbuttonnavigation.Fragments.ScrollViewFragment;
 import ru.arnis.floatingbuttonnavigation.Fragments.RecyclerFragment;
 import ru.arnis.nav.FloatingButtonBottomNavigation;
 import ru.arnis.nav.OnItemClickListener;
@@ -22,18 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
         fbbn = (FloatingButtonBottomNavigation) findViewById(R.id.fbbn);
 
-        fbbn.setTitles("RecyclerView Demo","ListView Demo","Inspired By","Library info","Settings");
+        fbbn.setTitles("RecyclerView Demo","ScrollView Demo","Inspired By","Library info","Settings");
         fbbn.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int index) {
                 switch (index){
                     case 0: replaceFragment(new RecyclerFragment());break;
-                    case 1: replaceFragment(new ListviewFragment());break;
+                    case 1: replaceFragment(new ScrollViewFragment());break;
                     case 2: replaceFragment(new InspiredByFragment());break;
                 }
             }
         });
-
 
         addFragment(new RecyclerFragment());
     }
